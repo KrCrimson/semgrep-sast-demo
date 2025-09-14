@@ -1,0 +1,9 @@
+rules:
+  - id: python-sql-injection
+    message: "Possible SQL Injection: avoid string concatenation in SQL queries."
+    languages: [python]
+    severity: ERROR
+    patterns:
+      - pattern: cursor.execute("..." + $X)
+      - pattern: cursor.execute($X + "...")
+      - pattern: cursor.execute($X + $Y)
