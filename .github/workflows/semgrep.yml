@@ -1,5 +1,5 @@
 name: Semgrep Scan
-on: [push, pull_request]
+on: [push, pull_request, workflow_dispatch]
 
 jobs:
   semgrep:
@@ -8,4 +8,5 @@ jobs:
       - uses: actions/checkout@v3
       - uses: returntocorp/semgrep-action@v1
         with:
-          config: archivo/rules/sql-injection.yml
+          # Usa una ruta relativa al repo (montado en el contenedor)
+          config: rules/sql-injection.yml
